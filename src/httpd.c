@@ -8,12 +8,14 @@
 
 #define LISTEN_PORT 8123
 
-void err(char *msg) {
+void err(char *msg) 
+{
   perror(msg);
   exit(EXIT_FAILURE);
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[]) 
+{
   char *http_response = "HTTP/1.1 200 OK\r\n\r\n"
     "<html><head><title>Hello World</title><body>Hello World</body></html>\n";
 
@@ -29,7 +31,7 @@ int main(int argc, char *argv[]) {
   sockaddr.sin_port = htons(LISTEN_PORT);
   sockaddr.sin_addr.s_addr = htonl(INADDR_ANY);
 
-  if (bind(sockfd, (struct sockaddr *) &sockaddr, sizeof(sockaddr)) < 0) {
+  if (bind(sockfd, (struct sockaddr *)&sockaddr, sizeof(sockaddr)) < 0) {
     err("bind() error");
   }
 
